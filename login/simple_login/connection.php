@@ -11,9 +11,4 @@ if(!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)) {
 
 }
 
-$id = 0;
-$name = "";
-$grade = "";
-$update = false;
-
 ?>
