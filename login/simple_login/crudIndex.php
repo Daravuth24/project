@@ -3,28 +3,6 @@ session_start();
 
 include('connection.php');
 
-$added = false;
-
-//Add a new student
-if(isset($_POST['submit'])) 
-{
-
-    $sid = $_POST['stu_id'];
-    $sname = $_POST['stu_name'];
-    $sgrade = $_POST['stu_grade'];
-
-
-    $insert_data = "INSERT INTO info(stu_id, stu_name, stu_grade) VALUES('$sid','$sname','$sgrade')";
-    $run_data = mysqli_query($con, $insert_data);
-
-  	if($run_data){
-		$added = true;
-        header('location:crudIndex.php');
-  	}else{
-  		echo "Data not insert";
-  	}
-
-}
 ?>
 
 <html>
@@ -38,25 +16,24 @@ if(isset($_POST['submit']))
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-
+        
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         
         </head>
 
         <body>
         <div class="container">
+
+            <!-- Buttons -->
+
             <a href="logout.php" class="btn btn-success"><i class="fa fa-lock"></i> Logout</a>
-        <!-- Student Button modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Add new student
-            </button>
+          
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addStudent">Add new student</a>
 
             <!-- Add Student Modal -->
-            <div id="myModal" class ="modal fade" role="dialog">
+            <div id="addStudent" class ="modal fade" role="dialog">
                 
                 <div class="modal-dialog modal-lg">
-
-                    <!-- Modal Content -->
 
                     <div class="modal-content">
 
@@ -66,7 +43,7 @@ if(isset($_POST['submit']))
                         
                         <div class="modal-body">
 
-                            <form method="POST" enctype="multipart/form-data">
+                            <form action='addStu.php'method="POST" enctype="multipart/form-data">
 
                                
                                     <div class="mb-3">

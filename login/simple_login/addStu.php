@@ -2,8 +2,7 @@
 
 include("connection.php");
 
-//Add new student
-//$get_data = "SELECT * FROM info order by 1 desc";
+$added = false;
 
 if(isset($_POST['submit'])) {
 
@@ -17,11 +16,9 @@ if(isset($_POST['submit'])) {
 
   	if($run_data){
 		$added = true;
+    header('location:crudIndex.php');
   	}else{
   		echo "Data not insert";
   	}
 
 }
-
-?>
-
